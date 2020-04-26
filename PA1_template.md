@@ -5,22 +5,25 @@ library(ggplot2)
 library(knitr)
 knit2html("PA1_template.Rmd", force_v1 = TRUE)
 
-# Loading and preprocessing the data
+## Loading and preprocessing the data
+'''{r simulation, echo = FALSE}
 temp <- tempfile()
 fileURL <- "https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip"
 download.file(fileURL, temp)
 unzip(temp)
 
 activity <- read.csv("./activity.csv")
+'''
 
-# What is mean total number of steps taken per day?
-
+## What is mean total number of steps taken per day?
+'''{r simulation, echo = FALSE}
 steps.by.day <- activity %>% 
                 group_by(date) %>% 
                 summarize(total = sum(steps, na.rm = TRUE))
+'''
 
-# Make a histogram of the total number of steps taken each day
-
+## Make a histogram of the total number of steps taken each day
+'''{r simulation, echo = FALSE}
 hist(steps.by.day$total,
      main = "Total Number of Steps per Day",
      xlab = "Total Number of Steps",
